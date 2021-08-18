@@ -169,6 +169,12 @@ uint64_t GetPcAdjustment(uint64_t rel_pc, Elf* elf, ArchEnum arch) {
     }
     return 4;
   }
+  case ARCH_RISCV64: {
+    if (rel_pc < 4) {
+      return 0;
+    }
+    return 4;
+  }
   case ARCH_MIPS:
   case ARCH_MIPS64: {
     if (rel_pc < 8) {

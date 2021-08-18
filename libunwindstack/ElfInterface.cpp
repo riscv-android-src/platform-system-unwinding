@@ -173,7 +173,7 @@ int64_t ElfInterface::GetLoadBias(Memory* memory) {
 
 uint64_t ElfInterface::GetVirtAddrFromOffset(uint64_t addr) {
 
-  if (this && !pt_loads_.empty()) {
+  if (!pt_loads_.empty()) {
     for (auto& entry : pt_loads_) {
       uint64_t start = entry.second.offset;
       uint64_t end = start + entry.second.table_size;

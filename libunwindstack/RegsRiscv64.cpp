@@ -52,13 +52,6 @@ void RegsRiscv64::set_sp(uint64_t sp) {
   regs_[RISCV64_REG_SP] = sp;
 }
 
-uint64_t RegsRiscv64::GetPcAdjustment(uint64_t rel_pc, Elf*elf) {
-  if (rel_pc < 4) {
-    return 0;
-  }
-  return 4;
-}
-
 bool RegsRiscv64::SetPcFromReturnAddress(Memory*) {
   uint64_t ra = regs_[RISCV64_REG_RA];
   if (regs_[RISCV64_REG_PC] == ra) {
@@ -109,7 +102,7 @@ Regs* RegsRiscv64::Read(void* remote_data) {
 
   RegsRiscv64* regs = new RegsRiscv64();
   memcpy(regs->RawData(), &user->regs[0], RISCV64_REG_MAX * sizeof(uint64_t));
-  uint64_t* reg_data = reinterpret_cast<uint64_t*>(regs->RawData());
+  //uint64_t* reg_data = reinterpret_cast<uint64_t*>(regs->RawData());
   return regs;
 }
 

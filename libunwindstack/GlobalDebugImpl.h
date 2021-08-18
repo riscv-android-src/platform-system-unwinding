@@ -429,7 +429,7 @@ std::unique_ptr<GlobalDebugInterface<Symfile>> CreateGlobalDebugImpl(
       static_assert(sizeof(typename Impl::JITDescriptor) == 56, "layout");
       return std::make_unique<Impl>(arch, jit_memory, search_libs, global_variable_name);
     }
-    case ARCH_ARM64:
+    case ARCH_RISCV64:
       //todo: add risv64 implementation
       abort();
       break;
