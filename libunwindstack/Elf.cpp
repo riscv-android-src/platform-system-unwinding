@@ -102,11 +102,7 @@ std::string Elf::GetSoname() {
 }
 
 uint64_t Elf::GetRelPc(uint64_t pc, MapInfo* map_info) {
-#if defined (__riscv)
-  return interface_->GetVirtAddrFromOffset(pc - map_info->start() + load_bias_ + map_info->elf_offset());
-#else
   return pc - map_info->start() + load_bias_ + map_info->elf_offset();
-#endif
 }
 
 bool Elf::GetFunctionName(uint64_t addr, SharedString* name, uint64_t* func_offset) {
